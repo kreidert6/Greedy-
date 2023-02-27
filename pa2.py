@@ -11,7 +11,7 @@ def pa2(filename):
     """
     Solves problem described in pa2 problem statement.
     filename is the name of the file containing the input.
-    Should return the result: either the string "impossible"
+    Should return the result: either None
     if the problem has no solution, or a tuple containing two orders:
     the order of the first set up numbers, and the order of the second
     set of numbers.
