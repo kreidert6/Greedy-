@@ -143,29 +143,40 @@ if __name__ == "__main__":
         solution_f = open(solution_filename, "r")
         correct_answer = read_correct_answer(solution_f)
         your_answer = pa2(input_filename)
-        if your_answer == None and correct_answer == "impossible":
-            print("Correct\n")
-            num_correct += 1
-        elif len(your_answer) != 2:
-            print("Incorrect.  Length not 2")
-            print(f"Your answer = {your_answer}")
-            print(f"Correct answer = {correct_answer}")
-            incorrect_tests.append(i)
-        elif (your_answer[0] == correct_answer[0] and
-              your_answer[1] == correct_answer[1]):
-            print("Correct\n")
-            num_correct += 1
-        else: 
-            correct = check_answer(input_filename, your_answer)
-            if correct:
+        if your_answer == None:
+            if correct_answer == "impossible":
                 print("Correct\n")
                 num_correct += 1
             else:
-                print("Incorrect.  Does not satisfy requirements")
+                print("Incorrect")
                 print(f"Your answer = {your_answer}")
                 print(f"Correct answer = {correct_answer}")
                 incorrect_tests.append(i)
-
+        else:
+            if correct_answer == "impossible":
+                print("Incorrect")
+                print(f"Your answer = {your_answer}")
+                print(f"Correct answer = {correct_answer}")
+                incorrect_tests.append(i)
+            elif len(your_answer) != 2:
+                print("Incorrect.  Length not 2")
+                print(f"Your answer = {your_answer}")
+                print(f"Correct answer = {correct_answer}")
+                incorrect_tests.append(i)
+            elif (your_answer[0] == correct_answer[0] and
+                your_answer[1] == correct_answer[1]):
+                print("Correct\n")
+                num_correct += 1
+            else: 
+                correct = check_answer(input_filename, your_answer)
+                if correct:
+                    print("Correct\n")
+                    num_correct += 1
+                else:
+                    print("Incorrect.  Does not satisfy requirements")
+                    print(f"Your answer = {your_answer}")
+                    print(f"Correct answer = {correct_answer}")
+                    incorrect_tests.append(i)
     finish_time = process_time()
     run_time = finish_time - start_time
     print(f"Your runtime was {run_time}")
