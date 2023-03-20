@@ -25,26 +25,10 @@ def pa2(filename):
     
 
     #set unordered list a
-    unordered_list_A = []
-    zero_index = f.readline().split()
-    first_index = f.readline().split()
-    i = 0
-    tuple_place = 1
-    for item in zero_index:
-        unordered_list_A.append((int(item), int(first_index[i]),tuple_place))
-        tuple_place+=1
-        i += 1
+    unordered_list_A = getUnorderedList(f)
 
     #set unordered list b
-    unordered_list_B = []
-    zero_index = f.readline().split()
-    first_index = f.readline().split()
-    i = 0
-    tuple_place = 1
-    for item in zero_index:
-        unordered_list_B.append((int(item), int(first_index[i]),tuple_place))
-        tuple_place+=1
-        i += 1
+    unordered_list_B = getUnorderedList(f)
 
     print("LIST A: ")
     print(unordered_list_A)
@@ -93,6 +77,18 @@ def merge(left, right):
     result += left[i:]
     result += right[j:]
     return result
+
+def getUnorderedList(f):
+    unordered_list = []
+    zero_index = f.readline().split()
+    first_index = f.readline().split()
+    i = 0
+    tuple_place = 1
+    for item in zero_index:
+        unordered_list.append((int(item), int(first_index[i]),tuple_place))
+        tuple_place+=1
+        i += 1
+    return unordered_list
 
 if __name__ == "__main__":
     """
