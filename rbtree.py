@@ -63,7 +63,7 @@ class RBTreeNode:
         return self.key(self.item) == self.key(node.item)
 
 class RBTree:
-    def __init__(self, key = lambda x: x):
+    def __init__(self, key = lambda x: x): #x[0]
         """
         Initializes empty tree.
         """

@@ -35,12 +35,35 @@ def pa2(filename):
     print("LIST B: ")
     print(unordered_list_B)
 
-    sorted_A = merge_sort(unordered_list_A)
-    sorted_B = merge_sort(unordered_list_B)
-    print('\n'+"SORTED LIST A: ")
-    print(sorted_A)
-    print('\n'+"SORTED LIST B: ")
-    print(sorted_B)
+    # sorted_A = merge_sort(unordered_list_A)
+    # sorted_B = merge_sort(unordered_list_B)
+    # print('\n'+"SORTED LIST A: ")
+    # print(sorted_A)
+    # print('\n'+"SORTED LIST B: ")
+    # print(sorted_B)
+
+    
+    tree_a = RBTree(key = lambda x: x[0])
+    second_num_dict = {}
+    for item in unordered_list_A:
+        tree_a.insert(item)
+
+
+    for item in unordered_list_A:
+        
+    
+
+
+
+
+    
+    
+
+
+
+    #for item in unordered_list_A:
+
+
 
 
     #start with a merge sort for bullet point one?
