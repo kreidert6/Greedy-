@@ -50,7 +50,15 @@ def pa2(filename):
 
 
     for item in unordered_list_A:
-        
+        try:
+            second_num_dict[item[0]].insert(item)
+        except KeyError:
+            tree = RBTree(key = lambda item: item[1])
+            second_num_dict[item[0]] = tree
+            second_num_dict[item[0]].insert(item)
+
+
+    print(second_num_dict[1].delete_min())
     
 
 
