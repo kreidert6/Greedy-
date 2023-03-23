@@ -52,6 +52,7 @@ def pa2(filename):
         tree_b.insert(item)
 
 
+    #I put the trees into lists so it's more readable, idk if this is bad for later on
     ordered_list_A = []
     for i in range(len(tree_a)):
         min = tree_a.delete_min()
@@ -90,19 +91,42 @@ def pa2(filename):
 
 
 
-    
-
-    #this is the body that i was trying to think throug, this isn't close to complete 
+    final_list_A = []
+    final_list_B = []
+   
+    #this is the body that i was trying to think throug, this isn't complete 
     for i in range(len(ordered_list_A)):
         
-        #if theres a top/bottom conflict, then will enter while loop
-        while ordered_list_A[i][1] > ordered_list_B[i][1]:
-            compared_val = second_num_dict_A[ordered_list_A[i][0]].delete_smallest_greater_than()
-            if compared_val > ordered_list_B[i][1]:
-                ordered_list_A[i] = second_num_dict_A[1].delete_smallest_greater_than()
-            else:
-                second_num_dict_A[ordered_list_A[i][0]].insert(compared_val)
-    
+        #if theres a top/bottom conflict, then will enter if statement
+        if ordered_list_A[i][1] <= ordered_list_B[i][1]:
+            try:
+                new_compare = second_num_dict_A[ordered_list_A[i][0]].delete_smallest_greater_than(ordered_list_B[i])
+                final_list_A.append(new_compare)
+                
+            except:
+                print("switching a doesn't work")
+            #i don't know if you can do back to back try except statements like this but we need to try to switch 
+            #the b list if the a list doesn't work
+            try:
+                new_compare = second_num_dict_B[ordered_list_B[i][0]].delete_smallest_greater_than(ordered_list_B[i])
+                final_list_B.append(new_compare)
+            except:
+                print("switching b doesn't work, no solution")
+        else:
+            final_list_A.append(ordered_list_A[i])
+            final_list_B.append(ordered_list_B[i])
+
+    print("final A")
+    print(final_list_A)
+    print("final B")
+    print(final_list_B)
+
+
+
+           
+
+
+
 
 
 
