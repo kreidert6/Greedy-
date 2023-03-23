@@ -30,9 +30,9 @@ def pa2(filename):
     #set unordered list b
     unordered_list_B = getUnorderedList(f)
 
-    print("LIST A: ")
+    print("Original list A: ")
     print(unordered_list_A)
-    print("LIST B: ")
+    print("Original list B: ")
     print(unordered_list_B)
 
     # sorted_A = merge_sort(unordered_list_A)
@@ -44,21 +44,71 @@ def pa2(filename):
 
     
     tree_a = RBTree(key = lambda x: x[0])
-    second_num_dict = {}
     for item in unordered_list_A:
         tree_a.insert(item)
 
+    tree_b = RBTree(key = lambda x: x[0])
+    for item in unordered_list_B:
+        tree_b.insert(item)
 
+
+    ordered_list_A = []
+    for i in range(len(tree_a)):
+        min = tree_a.delete_min()
+        ordered_list_A.append(min)
+    ordered_list_B = []
+    for i in range(len(tree_b)):
+        min = tree_b.delete_min()
+        ordered_list_B.append(min)
+
+
+    print("Ordered by first num list A:")
+    print(ordered_list_A)
+    print("Ordered by first num list B:")
+    print(ordered_list_B)
+
+
+
+    second_num_dict_A = {}
+    second_num_dict_B = {}
     for item in unordered_list_A:
         try:
-            second_num_dict[item[0]].insert(item)
+            second_num_dict_A[item[0]].insert(item)
         except KeyError:
             tree = RBTree(key = lambda item: item[1])
-            second_num_dict[item[0]] = tree
-            second_num_dict[item[0]].insert(item)
+            second_num_dict_A[item[0]] = tree
+            second_num_dict_A[item[0]].insert(item)
 
 
-    print(second_num_dict[1].delete_min())
+    for item in unordered_list_B:
+        try:
+            second_num_dict_B[item[0]].insert(item)
+        except KeyError:
+            tree = RBTree(key = lambda item: item[1])
+            second_num_dict_B[item[0]] = tree
+            second_num_dict_B[item[0]].insert(item)
+
+
+
+    
+
+    #this is the body that i was trying to think throug, this isn't close to complete 
+    for i in range(len(ordered_list_A)):
+        
+        #if theres a top/bottom conflict, then will enter while loop
+        while ordered_list_A[i][1] > ordered_list_B[i][1]:
+            compared_val = second_num_dict_A[ordered_list_A[i][0]].delete_smallest_greater_than()
+            if compared_val > ordered_list_B[i][1]:
+                ordered_list_A[i] = second_num_dict_A[1].delete_smallest_greater_than()
+            else:
+                second_num_dict_A[ordered_list_A[i][0]].insert(compared_val)
+    
+
+
+
+
+    # print(second_num_dict_A[2].delete_min())
+    # print(second_num_dict_A[2].delete_min())
     
 
 
