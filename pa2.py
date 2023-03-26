@@ -1,6 +1,6 @@
 # File: pa2.py
-# Author:     
-# Date: 
+# Author: Garrett and Tyler    
+# Date: 3 -24
 # Description: Program containing a function
 # to solve the problem described in pa2 for comp 480,
 # spring 2023.
